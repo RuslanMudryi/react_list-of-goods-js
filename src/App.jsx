@@ -33,7 +33,7 @@ export const App = () => {
     });
   };
 
-  const sortedGoods = goodsFromServer.toSorted((goodA, goodB) => {
+  const sortedGoods = [...goodsFromServer].sort((goodA, goodB) => {
     if (sortBy === 'alphabet') {
       return goodA.localeCompare(goodB);
     }
@@ -45,7 +45,7 @@ export const App = () => {
     return 0;
   });
 
-  const reverseGoods = reverse < 0 ? sortedGoods.toReversed() : sortedGoods;
+  const reverseGoods = reverse < 0 ? [...sortedGoods].reverse() : sortedGoods;
   const buttonChangeClass = key => {
     for (const button of document.querySelectorAll('.button')) {
       if (button.dataset.sort === key) {
